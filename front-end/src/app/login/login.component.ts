@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error: string;
 
-  user: { id: number; username: string; };
+  user: { id: number; username: string; logintype: string;};
 
   constructor(
     private readonly loginService: LoginService, 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       },
       (err: HttpErrorResponse) => {
         this.user = null;
-        
+        alert(err.message);
       }
     );
     this.loginForm.reset();

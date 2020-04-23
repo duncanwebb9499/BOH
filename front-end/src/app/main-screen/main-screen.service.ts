@@ -18,6 +18,11 @@ export interface Company {
   primary_phone: string;
   primary_email: string;
 }
+export interface User {
+  username: string;
+  id: number;
+  logintype: string;
+}
 
 @Injectable({
   providedIn: 'root'

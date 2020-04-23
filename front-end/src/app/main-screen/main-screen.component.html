@@ -7,6 +7,7 @@ table, th, td {
 }
 </style>
 </head>
+
 <body>
 
 <table style="width:100%">
@@ -23,21 +24,6 @@ table, th, td {
     <td>{{c.status}}</td>
   </tr>
 </table>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
-</head>
-<body>
-
 <table style="width:100%">
   <tr>
     <th>Company Name</th>
@@ -47,18 +33,16 @@ table, th, td {
     <th>Primary Contact Last Name</th>
   </tr>
   <tr *ngFor="let c of companies">
-    <td>{{c.name}}</td>
+    <td><button>{{c.name}}</button></td>
     <td>{{c.primary_phone}}</td>
     <td>{{c.primary_email}}</td>
     <td>{{c.contact_first_name}}</td>
     <td>{{c.contact_last_name}}</td>
   </tr>
-  </table>
-
-
-
-
+</table>
+<p>Welcome {{user.logintype}} {{user.username}}</p>
 
 </body>
 </html>
+
 

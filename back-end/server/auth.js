@@ -7,7 +7,8 @@ const auth = {
       select id,
         user_name,
         password,
-        my_salt
+        my_salt,
+        login_type
       from public.login
       where user_name = $1
     `;
@@ -30,8 +31,8 @@ const auth = {
         console.log(err.message);
       } 
       if(passwordStored === hashed){
-        console.log("Successfully logged in");
-        res.status(200).json({username: user.user_name, id: user.id});
+        console.log("Successfully logged in user "+user);
+        res.status(200).json({username: user.user_name, id: user.id, logintype: user.login_type });
       }
       else{
         console.log("incorrect password");
