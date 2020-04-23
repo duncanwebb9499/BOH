@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     //TODO: yeet
     this.loginService.login(this.loginForm.controls['username'].value, this.loginForm.controls['password'].value).pipe(first()).subscribe(
       (data) => {
-        console.log(data);
         if(data){
           alert("Login Successful");                  
           this.router.navigate([this.returnUrl]);
