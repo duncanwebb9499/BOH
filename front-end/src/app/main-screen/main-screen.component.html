@@ -7,39 +7,26 @@ table, th, td {
 }
 </style>
 </head>
-
+<!--Slimed down the tables so they only have 1 collomn each, one for Clients and one for companies.
+No idea if the rows work, need to be tested-->
 <body>
-
-<table style="width:100%">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th> 
-    <th>Phone Number</th>
-    <th>Status</th>
-  </tr>
-  <tr *ngFor="let c of clients">
-    <td>{{c.first_name}}</td>
-    <td>{{c.last_name}}</td>
-    <td>{{c.phone_number}}</td>
-    <td>{{c.status}}</td>
-  </tr>
-</table>
-<table style="width:100%">
-  <tr>
-    <th>Company Name</th>
-    <th>Phone Number</th>
-    <th>Email</th>
-    <th>Primary Contact First Name</th>
-    <th>Primary Contact Last Name</th>
-  </tr>
-  <tr *ngFor="let c of companies">
-    <td><button>{{c.name}}</button></td>
-    <td>{{c.primary_phone}}</td>
-    <td>{{c.primary_email}}</td>
-    <td>{{c.contact_first_name}}</td>
-    <td>{{c.contact_last_name}}</td>
-  </tr>
-</table>
+ <table style="width:100%">
+    <tr>
+      <th>Clients</th>
+    </tr>
+    <tr *ngFor="let c of clients">
+      <td><button (click)="goToEdit(True)">{{c.first_name}}</button> </td>
+    </tr>
+  </table>
+  
+  <table style="width:100%">
+    <tr>
+      <th>Companies</th> 
+    </tr>
+    <tr *ngFor="let c of companies">
+      <td><button (click)="goToEdit(False)">{{c.name}}</button> </td>
+    </tr>
+  </table>
 <p>Welcome {{user.logintype}} {{user.username}}</p>
 
 </body>
