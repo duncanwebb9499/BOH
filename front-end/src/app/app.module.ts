@@ -8,6 +8,8 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
+import { EditInfoComponent } from './edit-info/edit-info.component';
+import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -28,7 +30,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    MainScreenComponent
+    MainScreenComponent,
+    EditInfoComponent,
+    EditCompanyInfoComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

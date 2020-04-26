@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
 import { MainScreenService, Client, Company, User } from './main-screen.service';
 import { Observable } from 'rxjs';
 import { LoginService } from '../login/login.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-main-screen',
@@ -16,7 +18,10 @@ export class MainScreenComponent implements OnInit {
   companies: Company[];
   user: User;
 
-  constructor(private readonly mainScreenService: MainScreenService, private readonly loginService: LoginService) {
+  constructor(private readonly mainScreenService: MainScreenService, 
+    private readonly loginService: LoginService,
+    private readonly route: ActivatedRoute,
+    private router: Router,) {
   }
   
   ngOnInit(): void {
@@ -38,5 +43,12 @@ export class MainScreenComponent implements OnInit {
     )
   }
 
+  private goToEdit(type: boolean, name: String){
+    if (type == true) {
+      this.router.navigate(['editClientInfo']);
+    } else {
+      this.router.navigate(['editCompanyInfo'])
+    }
+  }
 
 }
