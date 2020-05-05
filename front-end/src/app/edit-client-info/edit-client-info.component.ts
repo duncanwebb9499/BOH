@@ -25,8 +25,14 @@ export class EditClientInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedClientId = +this.route.snapshot.paramMap.get('id');
-    this.selectedClientObs = this.editClientInfoService.getClient(this.selectedClientId);
-    this.getClientFromObs();
+    this.editClientInfoService.getClient(this.selectedClientId).subscribe(
+      (client: Client) => {
+        this.selectedClient = client;
+      },
+      (err: HttpErrorResponse) => {
+        console.error(err);
+      }
+    );
     this.clientForm = this.formBuilder.group({
       id: { value: this.selectedClientId, disabled: true },
       first_name: ['', Validators.required],
@@ -34,31 +40,6 @@ export class EditClientInfoComponent implements OnInit {
       status_id: '',
       phone_number: ''
     });
-  }
-
-  getClientFromObs() {
-    if (!this.selectedClientObs) {
-      this.selectedClient = null;
-    } else {
-      this.selectedClientObs.subscribe(
-        (client: Client) => {
-          console.log(client);
-          this.selectedClient = client;
-          this.clientForm.patchValue({
-            id: client.id,
-            first_name: client.first_name,
-            last_name: client.last_name,
-            status_id: client.status,
-            phone_number: client.phone_number
-          });
-          console.log(this.selectedClient);
-        },
-        (err: HttpErrorResponse) => {
-          console.log(err.message);
-        }
-      );
-    }
-    console.log(this.selectedClient);
   }
 
   onSubmit(): void {

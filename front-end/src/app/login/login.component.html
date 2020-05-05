@@ -1,13 +1,20 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label>
-        Username:
-        <input type="text" formControlName="username">
-    </label>
+<head>
+    <link rel="stylesheet" href="login.component.css">
+</head>
+<body>
+    <h1>Administration Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="imgcontainer">
+            <img src="/front-end/src/assets/img/boh-logo.png">
+        </div>
+        <div class="container">
+            <label for="username"><b style="color:#2a3990;">Username</b></label>
+            <input type="text" placeholder="username" formControlName="username" required>
 
-    <label>
-        Password:
-        <input type="password" formControlName="password">
-    </label>
-
-    <button type="submit" [disabled]="!loginForm.valid">Login</button>
-</form>
+            <label for="password"><b style="color:#2a3990;">Password</b></label>
+            <input type="password" placeholder="Enter Password" formControlName="password">
+        
+            <button type="submit" [disabled]="!loginForm.valid">Login</button>
+        </div>
+    </form>
+</body>
