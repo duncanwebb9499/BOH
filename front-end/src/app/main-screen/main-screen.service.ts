@@ -10,6 +10,7 @@ export interface Client {
   last_name: string;
   status: number;
   phone_number: string;
+  id: number;
 }
 export interface Company {
   name: string;

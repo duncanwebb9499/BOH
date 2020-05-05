@@ -36,26 +36,29 @@ const caseWorker = {
       select last_name,
       first_name,
       phone_number,
-      status_id
+      status_id,
+      id
       from public.client
       where id = $1
       `;
-  
-      pool.select(res, qryStr);
+      const params = new Array(req.params.id);
+      pool.selectOne(res, qryStr, params, 'client');
     },
   
     getAllClients: (req, res) => {
         const pool = req.app.get('pool');
         const qryStr = `
-          select last_name,
-          first_name,
+          select first_name,
+          last_name,
           phone_number,
-          status_id
+          status_id,
+          id
           from public.client
           order by id asc limit 3
         `;
         pool.select(res, qryStr);
-    }
+    },
   };
+  
   
   module.exports = caseWorker;

@@ -15,16 +15,17 @@ No idea if the rows work, need to be tested-->
       <th>Clients</th>
     </tr>
     <tr *ngFor="let c of clients">
-      <td><button (click)="goToEdit(True)">{{c.first_name}}</button> </td>
+      <td><button [routerLink]="['/editclient', c.id]">{{c.first_name}}</button></td>
     </tr>
   </table>
+  
   
   <table style="width:100%">
     <tr>
       <th>Companies</th> 
     </tr>
     <tr *ngFor="let c of companies">
-      <td><button (click)="goToEdit(False)">{{c.name}}</button> </td>
+      <td><button>{{c.name}}</button> </td>
     </tr>
   </table>
 <p>Welcome {{user.logintype}} {{user.username}}</p>

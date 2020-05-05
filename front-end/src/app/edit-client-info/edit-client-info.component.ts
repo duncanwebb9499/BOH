@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { editClientService, Client} from './edit-client.service';
+import { ActivatedRoute } from '@angular/router';
+import { Client } from '../main-screen/main-screen.service';
+import { EditClientInfoService } from './edit-client-info.service';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Location } from '@angular/common';
-import {MainScreenComponent} from '../main-screen/main-screen.component'
-
 
 @Component({
   selector: 'app-edit-client-info',
@@ -12,25 +11,40 @@ import {MainScreenComponent} from '../main-screen/main-screen.component'
   styleUrls: ['./edit-client-info.component.css']
 })
 export class EditClientInfoComponent implements OnInit {
-  client: Client;
 
-  constructor(private readonly editClientService: editClientService, private location: Location) {
-  }
+  selectedClient: Client;
+  selectedClientObs: Observable<Client>;
+  selectedClientId: number;
+  
+  constructor(private readonly route: ActivatedRoute, private readonly editClientInfoService: EditClientInfoService) { }
 
   ngOnInit(): void {
-    this.populate();
+    this.selectedClientId = this.route.snapshot.params['id'];
+    this.selectedClientObs = this.editClientInfoService.getClient(this.selectedClientId);
+    this.getClientFromObs();
   }
 
-  private populate() {
-    this.editClientService.getClients().subscribe(
-      //TODO populate firstNames, lastNames, phoneNumbers, status
-      (client: Client) => this.client = client
-    );
+  getClientFromObs(){
+    if(!this.selectedClientObs){
+      this.selectedClient = null;
     }
- 
-    goBack(): void {
-    this.location.back();
-  }
+    else{
+      this.selectedClientObs.subscribe(
+        (client: Client)=>{
+          console.log(client);
+          this.selectedClient.first_name = client.first_name;
+          this.selectedClient.id = client.id;
+          this.selectedClient.last_name = client.last_name;
+          this.selectedClient.phone_number = client.phone_number;
+          this.selectedClient.status = client.status;
+        },
+        (err: HttpErrorResponse)=>{
+          console.log(err.message);
+        }
+      )
+    }
+    console.log(this.selectedClient);
 
+  }
 
 }

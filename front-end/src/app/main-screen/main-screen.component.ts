@@ -31,11 +31,9 @@ export class MainScreenComponent implements OnInit {
 
   private populate() {
     this.mainScreenService.getClients().subscribe(
-      //TODO populate firstNames, lastNames, phoneNumbers, status
       (clients: Client[]) => this.clients = clients
     );
     this.mainScreenService.getCompanies().subscribe(
-      //TODO populate companyNames, companyFirstNames, companyLastNames, companyEmail, companyPhone
       (companies: Company[])=>this.companies = companies
     )
     this.loginService.currentUser.subscribe(
@@ -43,12 +41,5 @@ export class MainScreenComponent implements OnInit {
     )
   }
 
-  private goToEdit(type: boolean, name: String){
-    if (type == true) {
-      this.router.navigate(['editClientInfo']);
-    } else {
-      this.router.navigate(['editCompanyInfo'])
-    }
-  }
 
 }

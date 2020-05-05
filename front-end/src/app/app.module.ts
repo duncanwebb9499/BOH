@@ -8,12 +8,12 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
-import { EditInfoComponent } from './edit-info/edit-info.component';
-import { EditCompanyInfoComponent } from './edit-company-info/edit-company-info.component';
+import { EditClientInfoComponent } from './edit-client-info/edit-client-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'home', component: MainScreenComponent, canActivate: [AuthGuard]},
+  { path: 'editclient/:id', component: EditClientInfoComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
@@ -31,8 +31,7 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     MainScreenComponent,
-    EditInfoComponent,
-    EditCompanyInfoComponent
+    EditClientInfoComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
