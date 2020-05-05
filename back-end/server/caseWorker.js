@@ -58,6 +58,20 @@ const caseWorker = {
         `;
         pool.select(res, qryStr);
     },
+
+    update: (req, res) => {
+      const pool = req.app.get('pool');
+      const qryStr = `
+        update public.client
+        set first_name = $2,
+          last_name = $3,
+          status_id = $4,
+          phone_number = $5
+        where id = $1
+      `;
+      const params = new Array(req.body);
+      pool.update(res, qryStr, params);
+    }
   };
   
   
