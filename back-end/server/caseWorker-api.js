@@ -9,5 +9,6 @@ router.get('/companies', (req, res) => caseWorker.getAllCompanies(req,res));
 router.get('/companies/:id', (req, res) => caseWorker.getCompanyById(req,res));
 
 //router.post('/clients', (req,res) => caseWorker.getClientById(req,res));
+router.put('/clients/:id', (req, res) => caseWorker.update(req, res));
 
 module.exports = router;

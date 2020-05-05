@@ -16,6 +16,13 @@ export class EditClientInfoService {
   constructor(private http: HttpClient) { }
   
   getClient(ClientId: number): Observable<Client> {
-    return this.http.get<Client>(server+'/caseworker/clients/'+ClientId )
+    return this.http.get<Client>(server+'/caseworker/clients/'+ClientId );
+  }
+
+  update(client: Client): Observable<any> {
+    return this.http.put(
+      server + '/caseworker/clients/' + client.id,
+      JSON.stringify(client)
+    );
   }
 }
