@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Client } from '../main-screen/main-screen.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
-
 
 const server = environment.server;
+
+export interface StatusCode {
+  id: number;
+  name: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditClientInfoService {
-
   constructor(private http: HttpClient) { }
-  
+
   getClient(ClientId: number): Observable<Client> {
-    return this.http.get<Client>(server+'/caseworker/clients/'+ClientId );
+    return this.http.get<Client>(server + '/caseworker/clients/' + ClientId );
+  }
+
+  getStatusCodes(): Observable<StatusCode[]> {
+    return this.http.get<StatusCode[]>(server + '/clients/status-codes');
   }
 
   update(client: Client): Observable<any> {

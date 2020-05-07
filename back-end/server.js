@@ -1,11 +1,13 @@
 const express = require('express');
+const http = require('http');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://localhost:4200']
@@ -25,14 +27,13 @@ app.all('/*', (req, res, next) => {
   }
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
-
 const port = process.env.PORT || 3000;
 
 // implement a shared PostgreSQL pool for use throughout the app
 app.set('pool', require('./server/pg-connector'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // implement API routes
 const api = require('./server/api.js');
@@ -48,4 +49,5 @@ app.use('/caseworker', caseWorkerAPI);
 // catch all other routes and return just a simple message
 app.all('*', (req, res) => res.send('Hi, this is not a real place'));
 
-app.listen(port, () => console.log(`Beacon of Hope backend service app listening on port ${port}!`));
+const server = http.createServer(app);
+server.listen(port, () => console.log(`Beacon of Hope backend service app listening on port ${port}!`));

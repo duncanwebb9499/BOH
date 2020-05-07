@@ -8,7 +8,7 @@ const server = environment.server;
 export interface Client {
   first_name: string;
   last_name: string;
-  status: number;
+  status_id: number;
   phone_number: string;
   id: number;
 }
@@ -29,7 +29,6 @@ export interface User {
   providedIn: 'root'
 })
 export class MainScreenService {
-
   constructor(private http: HttpClient) { }
 
   getClients(): Observable<Client[]> {

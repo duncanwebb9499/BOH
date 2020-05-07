@@ -22,11 +22,17 @@ export class LoginService {
       localStorage.setItem('currentUser', JSON.stringify(user));
       return user;
     },
-    (err: HttpErrorResponse)=>{
-      this.currentUser=null;
+    (err: HttpErrorResponse) => {
+      this.currentUser = null;
       return err;
+    }));
+  }
+
+  reset(): void {
+    const usr = this.validate();
+    if (usr) {
+      this.currentUser = of(JSON.parse(usr));
     }
-    ));
   }
 
   validate(): any {

@@ -69,7 +69,13 @@ const caseWorker = {
           phone_number = $5
         where id = $1
       `;
-      const params = new Array(req.body);
+      const params = new Array(
+        req.params.id,
+        req.body.first_name,
+        req.body.last_name,
+        req.body.status_id || null,
+        req.body.phone_number
+      );
       pool.update(res, qryStr, params);
     }
   };
