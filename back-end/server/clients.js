@@ -20,6 +20,18 @@ const clients = {
     const params = new Array(req.params.id);
 
     pool.selectOne(res, qryStr, params, 'client');
+  },
+
+  getStatusCodes: (req, res) => {
+    const pool = req.app.get('pool');
+    const qryStr = `
+      select id,
+        name
+      from public.status_source
+      order by sort_order
+    `;
+
+    pool.select(res, qryStr);
   }
 };
 

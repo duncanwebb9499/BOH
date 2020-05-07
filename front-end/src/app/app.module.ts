@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
@@ -9,6 +9,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth-guard.service';
 import { EditClientInfoComponent } from './edit-client-info/edit-client-info.component';
+import { HttpAuthInterceptor } from './http-interceptor.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -33,7 +34,9 @@ const routes: Routes = [
     MainScreenComponent,
     EditClientInfoComponent,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

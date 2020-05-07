@@ -1,0 +1,16 @@
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+  <input type="number" formControlName="id" placeholder="ID">
+  <br>
+  <input type="text" formControlName="first_name" placeholder="First name">
+  <br>
+  <input type="text" formControlName="last_name" placeholder="Last name">
+  <br>
+  <select formControlName="status_id">
+    <option>[Select one ...]</option>
+    <option [value]="c.id" *ngFor="let c of statusCodes">{{c.name}}</option>
+  </select>
+  <br>
+  <input type="text" formControlName="phone_number" placeholder="Phone number">
+  <br>
+  <button type="submit">Save</button>
+</form>

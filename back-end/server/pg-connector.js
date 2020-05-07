@@ -9,9 +9,9 @@ const pool = new Pool({
 
 pool.connect(err => {
   if (err) {
-    console.error(err);
-    // return res.status(500).send({ message: 'Database connection error.' });
+    // console.error(err);
     pool.end();
+    return res.status(500).send({ message: 'Database connection error.' });
   }
 });
 
@@ -69,8 +69,7 @@ go = (res, verb, qryStr, params, recordType, next) => {
     if (status === 200 && next) {
       res.locals['_' + recordType] = rtn;
       next();
-    } 
-    else {
+    } else {
      res.status(status).json(rtn);
     }
   });
