@@ -38,6 +38,17 @@ const companies = {
       const params = new Array(req.body.id, req.body.company_name, req.body.whateverelse);
   
       pool.insert(res, qryStr, params);
+    },
+
+    getNeighborhoodCodes: (req, res) => {
+      const pool = req.app.get('pool');
+      const qryStr = `
+        select id,
+          name
+        from public.neighborhood
+        order by id
+      `;
+      pool.select(res, qryStr);
     }
   };
   

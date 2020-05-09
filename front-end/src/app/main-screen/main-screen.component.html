@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
+  <link rel="stylesheet" href="main-screen.component.css">
 </head>
-<!--Slimed down the tables so they only have 1 collomn each, one for Clients and one for companies.
-No idea if the rows work, need to be tested-->
-<body>
- <table style="width:100%">
-    <tr>
-      <th>Clients</th>
-    </tr>
-    <tr *ngFor="let c of clients">
-      <td><button [routerLink]="['/editclient', c.id]">{{c.first_name}}</button></td>
-    </tr>
-  </table>
-  
-  
-  <table style="width:100%">
-    <tr>
-      <th>Companies</th> 
-    </tr>
-    <tr *ngFor="let c of companies">
-      <td><button>{{c.name}}</button> </td>
-    </tr>
-  </table>
-<p>Welcome {{user.logintype}} {{user.username}}</p>
 
+
+<body>
+  <header>
+    <img src="../../assets/img/boh-logo.png" width = "231" height = "100" style="float:left;">
+    <img src="../../assets/img/empty-profile-photo.png" width="100" height="100" style="float:right;">
+    <h1>Admin Home</h1>
+  </header>
+
+  <section>
+    <h2>Welcome to Beacon Of Hope {{user.username}}</h2>
+    <table>
+      <tr>
+        <td>
+          <table width="367">
+            <tr>
+              <th>Clients</th>
+            </tr>
+            <tr *ngFor="let c of clients">
+              <td><button [routerLink]="['/editclient', c.id]">{{c.first_name}} {{c.last_name}}</button></td>
+            </tr>
+          </table>
+        </td>
+        <td>
+          <table width="500">
+            <tr>
+              <th>Companies</th> 
+            </tr>
+            <tr *ngFor="let c of companies">
+              <td><button [routerLink]="['/editcompany', c.id]">{{c.name}}</button> </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </section>
+  
+
+
+
+  
+  
 </body>
 </html>
 

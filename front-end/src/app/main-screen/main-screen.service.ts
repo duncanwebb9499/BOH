@@ -14,10 +14,16 @@ export interface Client {
 }
 export interface Company {
   name: string;
-  contact_first_name: string;
-  contact_last_name: string;
+  primary_first_name: string;
+  primary_last_name: string;
   primary_phone: string;
   primary_email: string;
+  address1: string;
+  city: string;
+  state: string;
+  zip_code: string;
+  neighborhood_id: number;
+  id: number;
 }
 export interface User {
   username: string;

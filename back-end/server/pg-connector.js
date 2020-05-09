@@ -50,7 +50,7 @@ go = (res, verb, qryStr, params, recordType, next) => {
     // note there are separate handlers for 'select' (return multiple rows) and 'selectOne' (return 1 row or 404)
     // there are not separate handlers for delete, insert, and update, since they do not return data; they just run
     if (err) {
-      // console.error(err);
+      console.log(err.message);
       status = 500;
       rtn = { message: 'Something went wrong with the database query.' };
     } else if (verb === 'select') {

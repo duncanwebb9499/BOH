@@ -2,14 +2,14 @@
     <link rel="stylesheet" href="login.component.css">
 </head>
 <body>
-    <h1>Administration Login</h1>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="imgcontainer">
-            <img src="/front-end/src/assets/img/boh-logo.png">
+            <img src="../../assets/img/boh-logo.png" width = "231" height = "100">
         </div>
+        <h1 style="text-align:center; color:#2a3990; font-size:50px">Administration Login</h1>
         <div class="container">
             <label for="username"><b style="color:#2a3990;">Username</b></label>
-            <input type="text" placeholder="username" formControlName="username" required>
+            <input type="text" placeholder="Enter Username" formControlName="username" required>
 
             <label for="password"><b style="color:#2a3990;">Password</b></label>
             <input type="password" placeholder="Enter Password" formControlName="password">
