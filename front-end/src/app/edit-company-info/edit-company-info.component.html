@@ -1,36 +1,55 @@
-<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
-    <label for="name"><b style="color:#2a3990;">Company Name</b></label>
-    <input type="text" formControlName="name" placeholder="Company Name">
-    <br>
-    <label for="primary_first_name"><b style="color:#2a3990;">Primary Contact's First Name</b></label>
-    <input type="text" formControlName="primary_first_name" placeholder="Primary First name">
-    <br>
-    <label for="primary_last_name"><b style="color:#2a3990;">Primary Contact's Last Name</b></label>
-    <input type="text" formControlName="primary_last_name" placeholder="Primary Last name">
-    <br>
-    <label for="primary_phone"><b style="color:#2a3990;">Primary Contact's Phone Number</b></label>
-    <input type="text" formControlName="primary_phone" placeholder="Primary Phone">
-    <br>
-    <label for="primary_email"><b style="color:#2a3990;">Primary Contact's Email Address</b></label>
-    <input type="text" formControlName="primary_email" placeholder="Primary Email">
-    <br>
-    <label for="address"><b style="color:#2a3990;">Company Address</b></label>
-    <input type="text" formControlName="address" placeholder="Address">
-    <br>
-    <label for="city"><b style="color:#2a3990;">Company City</b></label>
-    <input type="text" formControlName="city" placeholder="City">
-    <br>
-    <label for="state"><b style="color:#2a3990;">Company State</b></label>
-    <input type="text" formControlName="state" placeholder="State">
-    <br>
-    <label for="zip_code"><b style="color:#2a3990;">Company Zip Code</b></label>
-    <input type="text" formControlName="zip_code" placeholder="Zip Code">
-    <br>
-    <label for="neighborhood_id"><b style="color:#2a3990;">Neighborhood</b></label>
-    <select formControlName="neighborhood_id">
-        <option>[Select one ...]</option>
-        <option [value]="c.id" *ngFor="let c of neighborhoodCodes">{{c.name}}</option>
-      </select>
-    <br>
-    <button type="submit">Save</button>
-  </form>
+<head>
+    <link rel="stylesheet" href="edit-company-info.component.css">
+</head>
+
+<body>
+    <header>
+        <img src="../../assets/img/boh-logo.png" width="231" height="100" style="float:left;">
+        <img src="../../assets/img/empty-profile-photo.png" width="75" height="75" style="float:right;">
+        <h1>Edit Information for {{selectedCompany.name}}</h1>
+    </header>
+
+    <section>
+        <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+            <div class="container">
+            <label for="name"><b style="color:#2a3990;">Company Name</b></label>
+            <input type="text" formControlName="name" placeholder="Company Name">
+            <br>
+            <label for="primary_first_name"><b style="color:#2a3990;">Primary Contact's First Name</b></label>
+            <input type="text" formControlName="primary_first_name" placeholder="Primary First name">
+            <br>
+            <label for="primary_last_name"><b style="color:#2a3990;">Primary Contact's Last Name</b></label>
+            <input type="text" formControlName="primary_last_name" placeholder="Primary Last name">
+            <br>
+            <label for="primary_phone"><b style="color:#2a3990;">Primary Contact's Phone Number</b></label>
+            <input type="text" formControlName="primary_phone" placeholder="Primary Phone">
+            <br>
+            <label for="primary_email"><b style="color:#2a3990;">Primary Contact's Email Address</b></label>
+            <input type="text" formControlName="primary_email" placeholder="Primary Email">
+            <br>
+            <label for="address"><b style="color:#2a3990;">Company Address</b></label>
+            <input type="text" formControlName="address" placeholder="Address">
+            <br>
+            <label for="city"><b style="color:#2a3990;">Company City</b></label>
+            <input type="text" formControlName="city" placeholder="City">
+            <br>
+            <label for="state"><b style="color:#2a3990;">Company State</b></label>
+            <input type="text" formControlName="state" placeholder="State">
+            <br>
+            <label for="zip_code"><b style="color:#2a3990;">Company Zip Code</b></label>
+            <input type="text" formControlName="zip_code" placeholder="Zip Code">
+            <br>
+            <label for="neighborhood_id"><b style="color:#2a3990;">Neighborhood</b></label>
+            <select formControlName="neighborhood_id">
+                <option>[Select one ...]</option>
+                <option [value]="c.id" *ngFor="let c of neighborhoodCodes">{{c.name}}</option>
+              </select>
+            <br>
+            <button type="submit">Save</button>
+            </div>
+          </form>
+    </section>
+    
+    
+</body>
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="main-screen.component.css">
 </head>
@@ -7,13 +8,13 @@
 
 <body>
   <header>
-    <img src="../../assets/img/boh-logo.png" width = "231" height = "100" style="float:left;">
-    <img src="../../assets/img/empty-profile-photo.png" width="100" height="100" style="float:right;">
+    <img src="../../assets/img/boh-logo.png" width="231" height="100" style="float:left;">
+    <img src="../../assets/img/empty-profile-photo.png" width="75" height="75" style="float:right;">
     <h1>Admin Home</h1>
   </header>
 
   <section>
-    <h2>Welcome to Beacon Of Hope {{user.username}}</h2>
+    <h2 style="font-size:small; color: #2a3990; text-align: right;">Welcome to Beacon Of Hope {{user.username}}</h2>
     <table>
       <tr>
         <td>
@@ -29,23 +30,102 @@
         <td>
           <table width="500">
             <tr>
-              <th>Companies</th> 
+              <th>Companies</th>
             </tr>
             <tr *ngFor="let c of companies">
               <td><button [routerLink]="['/editcompany', c.id]">{{c.name}}</button> </td>
             </tr>
           </table>
         </td>
+        <section style="overflow-y: auto; max-height: 10cm;">
+          <table style=" background-color: #14133c;">
+            <h3 style="font-size: 20px; color: whitesmoke; text-align: center;">About Us</h3>
+            <div style="font-family:Arial, Helvetica, sans-serif;">
+              <h5 style="color: yellow; font-size: large;">Vision</h5>
+              <p style="color: rgb(181,250,227); font-size: small;">Everyone who needs a Second Chance to work and
+                change their
+                life – gets that
+                chance.</p>
+              <h5 style="color: yellow; font-size: large;">Mission</h5>
+              <p style="color: rgb(181,250,227); font-size: small;">To expose 2500 Second Chance job opportunities in
+                Hamilton
+                County each year by
+                inspiring and equipping employers to embrace this cause.</p>
+              <h5 style="color: yellow; font-size: large;">Objectives</h5>
+              <p style="color: rgb(181,250,227); font-size: small;">INSPIRE more companies to provide Second Chance
+                employment<br>
+                RAISE AWARENESS of the need and proven business benefits<br>
+                LEVERAGE ECOSYSTEM of social services and incentives for Second Chance support<br>
+                SHARE BEST PRACTICES and resources</p>
+              <br>
+            </div>
+
+            <h3 style="font-size: 20px; color: whitesmoke; text-align: center;">History</h3>
+            <div style="color: rgb(181,250,227); font-family: Arial, Helvetica, sans-serif; font-size: small;">
+              <p>
+                The story of Beacon of Hope is closely linked with that of Nehemiah Manufacturing and its founders: Dan
+                Meyer and Richard Palmer. With years of experience in multi-national Consumer Packaged Goods companies
+                and
+                as an entrepreneur, Dan teamed up with strategic business planner Richard Palmer in 2008 to create a
+                company
+                that would bring needed change to the Cincinnati community. Together, Dan and Richard went to city
+                government, social services, and community leadership to ask the question – what do you need most that
+                we
+                can provide? The answer came back: jobs for the hard-to-hire. In 2009, Nehemiah Manufacturing was
+                intentionally established in Cincinnati’s West End to bring hope for hard-to-hire individuals. This hope
+                came in the form of stable, entry-level jobs, whole life coaching, and a heart to help.
+              </p>
+              <p>The mission – Build Brands. Create Jobs. Change Lives.</p>
+              <p>With the support of Procter &amp; Gamble, Nehemiah licensed several of P&amp;G’s smaller brands and was
+                successful in regaining upward sales momentum and growth, year after year. The original business model
+                was
+                to match one hard-to-hire employee with two clean-record hires. The expectation at the time was that
+                this
+                approach would yield a cost of 3 employees and the production of 2.5 employees. As they carried out the
+                plan, they discovered a dramatic shift in the outcome – the cost of those 3 employees was generating an
+                output of 4! It wasn’t always a smooth road, and Dan and Richard learned from their mistakes along the
+                way.
+                However, over the years they discovered that many social service organizations are equipped to prepare
+                these
+                citizens for the work force, post-incarceration.
+              </p>
+              <p>Today, Nehemiah employs roughly 110 individuals in their production and warehousing operations with an
+                upwards of 85% of those being hard-to-hire employees. COO, Mike Pachko comments, “These employees
+                sometimes
+                carry the baggage of a troubled past. But I’ll tell you, the ones who appreciate the second chance and
+                are
+                open to change become super-workers. For performance and positive spirit, I’d put our manufacturing team
+                up
+                against anyone – anywhere.”
+              </p>
+              <p>Each year on average 2,500 people return to Hamilton County from incarceration. This supply of talent
+                vastly exceeds the ability of Nehemiah to offer each Returning Citizen a job. In 2015, with an effort to
+                combat this issue, Dan and Richard set into motion plans to team with other businesses to provide these
+                critically needed jobs. In April, they assembled leaders from businesses, the government, the Church,
+                and
+                social services to kick off the Beacon of Hope Business Alliance.
+              </p>
+              <p>The mission over time is to expose 2,500 new jobs each year to the Fair Chance population by creating
+                awareness, providing a proven process and by providing easy access to an ecosystem of social support.
+                Along
+                the way, numerous businesses have discovered success in this space, while helping to create change on a
+                dramatically larger scale than any single company ever could.
+              </p>
+            </div>
+          </table>
+        </section>
+
       </tr>
     </table>
   </section>
-  
 
 
 
-  
-  
+
+
+
 </body>
+
 </html>
 
 

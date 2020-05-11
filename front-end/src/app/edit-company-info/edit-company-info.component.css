@@ -1,0 +1,15 @@
+label{
+    color: #2a3990;
+
+}
+b{color: #2a3990;}
+form {border: 3px solid #f1f1f1;}
+.container {padding: 16px;}
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
