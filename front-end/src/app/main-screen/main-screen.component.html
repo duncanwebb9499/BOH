@@ -41,6 +41,7 @@
             <table width="100%" >
               <tr>
                 <th>Clients</th>
+                <td><button [routerLink]="['/addclient']" style="width:5pc;">+</button></td>
               </tr>
               <tr *ngFor="let c of clients">
                 <td><button [routerLink]="['/editclient', c.id]">{{c.first_name}} {{c.last_name}}</button></td>

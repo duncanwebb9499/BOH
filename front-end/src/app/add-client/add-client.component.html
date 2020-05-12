@@ -1,0 +1,62 @@
+<body>
+    <header style="justify-content: center; display: flex">
+        <table style="width: 100pc;">
+          <tr>
+            <td style="float: left;width: 30pc;"><img src="../../assets/img/boh-logo.png" width="231" height="100" style="float:left;"></td>
+            <td><h1 style="justify-content: center; width: 40pc; vertical-align:top;">Add a New Client</h1></td>
+            <td style="float: right; ">
+              <table style="width: 30pc; border:0;">
+                <tr style="height: 75px;margin: 2px;padding:2px;">
+                  <td style="float: right;padding:2px;"><img src="../../assets/img/empty-profile-photo.png" width="75" height="75" style="float:right;"></td>
+                </tr>
+                <tr style="height: 30px;margin: 2px; padding:2px;">
+                  <td style="padding:2px;"><h2 style="font-size:small; color: #2a3990; text-align: right; font-size: 30">{{currentUser.username}}</h2></td>
+                </tr>
+                <tr style="height: 50px;margin: 2px; padding:2px;">
+                  <td style="padding:2px;"><button (click)="this.loginService.resetLogin();" style="width:100px; float: right; vertical-align: top; text-align: center;">Logout</button></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </header>
+    <br>
+    <section>
+      <div class = "container">
+        <form [formGroup]="addClientForm" (ngSubmit)="onSubmit()">
+            <label for="first_name"><b>Client's First Name</b></label>
+            <input type="text" formControlName="first_name" placeholder="Insert First Name">
+            <br>
+
+            <label for="last_name"><b>Client's Last Name</b></label>
+            <input type="text" formControlName="last_name" placeholder="Insert Last name">
+            <br>
+
+            <label for="sex"><b>Sex: </b></label>
+            <input type="radio" id="male" name="gender" value="m">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="f">
+            <label for="female">Female</label><br>
+            <br>
+            <label></label>
+            <input type="checkbox" id="owns_car">
+            <label for="owns_car"><b>Client Owns a Car</b></label> 
+            <br>
+            <input type="checkbox" id="has_license">
+            <label for="has_license"><b>Client has a License</b></label> 
+            <br>
+            <input type="checkbox" id="ride_available">
+            <label for="ride_available"><b>Client has a ride</b></label> 
+            <br>
+            <label for="status_id"><b>Current Status of the Client</b></label>
+            <select formControlName="status_id">
+                <option>[Select one ...]</option>
+                <option [value]="c.id" *ngFor="let c of statusCodes">{{c.name}}</option>
+            </select>
+            <br>
+            <button type="submit" style="justify-content:center; "><b>Add Client</b></button>
+        </form>
+      </div>
+      <button [routerLink]="['/home']">Go Back</button>
+    </section>
+  </body>

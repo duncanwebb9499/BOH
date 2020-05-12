@@ -13,7 +13,7 @@ const server = environment.server;
   providedIn: 'root'
 })
 export class LoginService {
-  public currentUser: Observable<any> = null;
+  public currentUser: Observable<any>;
 
   constructor(private http: HttpClient, private router: Router) { }
 

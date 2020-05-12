@@ -36,7 +36,7 @@ const caseWorker = {
         zip_code,
         neighborhood_id
         from public.company
-        order by id asc limit 14
+        order by id asc 
       `;
   
       pool.select(res, qryStr);
@@ -144,7 +144,7 @@ const caseWorker = {
           status_id,
           id
           from public.client 
-          order by id asc limit 14
+          order by id asc 
         `;
         pool.select(res, qryStr);
     },
