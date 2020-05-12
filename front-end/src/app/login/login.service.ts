@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 const server = environment.server;
 
@@ -12,9 +13,9 @@ const server = environment.server;
   providedIn: 'root'
 })
 export class LoginService {
-  public currentUser: Observable<any>;
+  public currentUser: Observable<any> = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(server + '/api/login', { username, password }).pipe(map(user => {
@@ -37,5 +38,11 @@ export class LoginService {
 
   validate(): any {
     return localStorage.getItem('currentUser');
+  }
+
+  resetLogin(){
+    this.currentUser = null;
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 }

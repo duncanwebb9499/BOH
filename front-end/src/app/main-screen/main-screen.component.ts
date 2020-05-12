@@ -15,31 +15,44 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class MainScreenComponent implements OnInit {
   clients: Client[];
+  clientsSearchable: Client[];
   companies: Company[];
+  companiesSearchable: Company[];
   user: User;
 
   constructor(private readonly mainScreenService: MainScreenService, 
-    private readonly loginService: LoginService,
+    readonly loginService: LoginService,
     private readonly route: ActivatedRoute,
     private router: Router,) {
   }
   
   ngOnInit(): void {
     this.populate();
+  }
 
+  searchClients(filterValue: string){
+    this.clients = this.clientsSearchable.filter(c => (c.first_name+' '+c.last_name).toLowerCase().indexOf(filterValue.trim().toLowerCase()) > -1);
+  }
+
+  searchCompanies(filterValue: string){
+    this.companies = this.companiesSearchable.filter(c => c.name.toLowerCase().indexOf(filterValue.trim().toLowerCase()) > -1);
   }
 
   private populate() {
     this.mainScreenService.getClients().subscribe(
-      (clients: Client[]) => this.clients = clients
+      (clients: Client[]) => {
+        this.clients = clients;
+        this.clientsSearchable = clients;
+      }
     );
     this.mainScreenService.getCompanies().subscribe(
-      (companies: Company[])=>this.companies = companies
+      (companies: Company[]) => {
+        this.companies = companies;
+        this.companiesSearchable = companies;
+      }
     )
     this.loginService.currentUser.subscribe(
       (user: User) => this.user = user
     )
   }
-
-
 }

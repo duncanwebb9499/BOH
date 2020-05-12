@@ -12,4 +12,7 @@ router.get('/companies/:id', (req, res) => caseWorker.getCompaniesByID(req,res))
 router.put('/clients/:id', (req, res) => caseWorker.updateClient(req, res));
 router.put('/companies/:id', (req, res) => caseWorker.updateCompany(req, res));
 
+router.post('/clients/add/:id', (req,res) => caseWorker.insertNewClient(req,res));
+router.post('/companies/add/:id', (req,res) => caseWorker.insertNewCompany(req,res));
+
 module.exports = router;

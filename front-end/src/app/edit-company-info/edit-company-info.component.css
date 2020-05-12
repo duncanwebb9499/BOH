@@ -1,6 +1,6 @@
 label{
     color: #2a3990;
-
+    padding: 20px;
 }
 b{color: #2a3990;}
 form {border: 3px solid #f1f1f1;}
@@ -13,3 +13,12 @@ input[type=text], select {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+header {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    color: #2a3990;
+    vertical-align: center;
+    
+  }

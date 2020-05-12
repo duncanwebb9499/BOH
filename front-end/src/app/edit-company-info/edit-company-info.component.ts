@@ -5,6 +5,7 @@ import { Observable, forkJoin } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditCompanyInfoService, NeighborhoodCode } from './edit-company-info.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-edit-company-info',
@@ -22,6 +23,7 @@ export class EditCompanyInfoComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     private readonly route: ActivatedRoute,
     private readonly router: Router,
+    readonly loginService: LoginService,
     private readonly editCompanyInfoService: EditCompanyInfoService)
     { }
 

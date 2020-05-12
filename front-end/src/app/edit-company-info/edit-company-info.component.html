@@ -3,43 +3,60 @@
 </head>
 
 <body>
-    <header>
-        <img src="../../assets/img/boh-logo.png" width="231" height="100" style="float:left;">
-        <img src="../../assets/img/empty-profile-photo.png" width="75" height="75" style="float:right;">
-        <h1>Edit Information for {{selectedCompany.name}}</h1>
-    </header>
-
+    <header style="justify-content: center; display: flex">
+        <table style="width: 100pc;">
+          <tr>
+            <td style="float: left;width: 30pc;"><img src="../../assets/img/boh-logo.png" width="231" height="100" style="float:left;"></td>
+            <td><h1 style="justify-content: center; width: 40pc; vertical-align:top;">Admin Home</h1></td>
+            <td style="float: right; ">
+              <table style="width: 30pc; border:0;">
+                <tr style="height: 75px;margin: 2px;padding:2px;">
+                  <td style="float: right;padding:2px;"><img src="../../assets/img/empty-profile-photo.png" width="75" height="75" style="float:right;"></td>
+                </tr>
+                <tr style="height: 30px;margin: 2px; padding:2px;">
+                  <td style="padding:2px;"><h2 style="font-size:small; color: #2a3990; text-align: right; font-size: 30">{{loginService.currentUser}}</h2></td>
+                </tr>
+                <tr style="height: 50px;margin: 2px; padding:2px;">
+                  <td style="padding:2px;"><button (click)="this.loginService.resetLogin();" style="width:100px; float: right; vertical-align: top; text-align: center;">Logout</button></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </header>
+    <br>
     <section>
+        
         <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
             <div class="container">
-            <label for="name"><b style="color:#2a3990;">Company Name</b></label>
+            <label for="name"><b>Company Name</b></label>
             <input type="text" formControlName="name" placeholder="Company Name">
             <br>
-            <label for="primary_first_name"><b style="color:#2a3990;">Primary Contact's First Name</b></label>
+            <label for="primary_first_name"><b>Primary Contact's First Name</b></label>
             <input type="text" formControlName="primary_first_name" placeholder="Primary First name">
             <br>
-            <label for="primary_last_name"><b style="color:#2a3990;">Primary Contact's Last Name</b></label>
+            <label for="primary_last_name"><b>Primary Contact's Last Name</b></label>
             <input type="text" formControlName="primary_last_name" placeholder="Primary Last name">
             <br>
-            <label for="primary_phone"><b style="color:#2a3990;">Primary Contact's Phone Number</b></label>
+            <label for="primary_phone"><b>Primary Contact's Phone Number</b></label>
             <input type="text" formControlName="primary_phone" placeholder="Primary Phone">
             <br>
-            <label for="primary_email"><b style="color:#2a3990;">Primary Contact's Email Address</b></label>
+            <label for="primary_email"><b>Primary Contact's Email Address</b></label>
             <input type="text" formControlName="primary_email" placeholder="Primary Email">
             <br>
-            <label for="address"><b style="color:#2a3990;">Company Address</b></label>
+            <label for="address"><b>Company Address</b></label>
             <input type="text" formControlName="address" placeholder="Address">
             <br>
-            <label for="city"><b style="color:#2a3990;">Company City</b></label>
+            <label for="city"><b>Company City</b></label>
             <input type="text" formControlName="city" placeholder="City">
             <br>
-            <label for="state"><b style="color:#2a3990;">Company State</b></label>
+            <label for="state"><b>Company State</b></label>
             <input type="text" formControlName="state" placeholder="State">
             <br>
-            <label for="zip_code"><b style="color:#2a3990;">Company Zip Code</b></label>
+            <label for="zip_code"><b>Company Zip Code</b></label>
             <input type="text" formControlName="zip_code" placeholder="Zip Code">
             <br>
-            <label for="neighborhood_id"><b style="color:#2a3990;">Neighborhood</b></label>
+            <label for="neighborhood_id"><b>Neighborhood</b></label>
             <select formControlName="neighborhood_id">
                 <option>[Select one ...]</option>
                 <option [value]="c.id" *ngFor="let c of neighborhoodCodes">{{c.name}}</option>

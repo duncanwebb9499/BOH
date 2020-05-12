@@ -1,16 +1,41 @@
-<form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
-  <input type="number" formControlName="id" placeholder="ID">
+<head>
+  <link rel="stylesheet" href="edit-client-info.component.css">
+</head>
+
+<body>
+  <header>
+    <img src="../../assets/img/boh-logo.png" width="231" height="100" style="float:left;">
+    <img src="../../assets/img/empty-profile-photo.png" width="75" height="75" style="float:right;">
+    <h1>Edit Information for {{selectedClient.first_name}} {{selectedClient.last_name}}</h1>
+  </header>
   <br>
-  <input type="text" formControlName="first_name" placeholder="First name">
-  <br>
-  <input type="text" formControlName="last_name" placeholder="Last name">
-  <br>
-  <select formControlName="status_id">
-    <option>[Select one ...]</option>
-    <option [value]="c.id" *ngFor="let c of statusCodes">{{c.name}}</option>
-  </select>
-  <br>
-  <input type="text" formControlName="phone_number" placeholder="Phone number">
-  <br>
-  <button type="submit">Save</button>
-</form>
+  <section>
+    <div class = "container">
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <label for="id"><b>Client ID</b></label>
+        <input type="number" formControlName="id" placeholder="ID">
+        <br>
+        <label for="first_name"><b>Client's First Name</b></label>
+        <input type="text" formControlName="first_name" placeholder="First name">
+        <br>
+        <label for="last_name"><b>Client's Last Name</b></label>
+        <input type="text" formControlName="last_name" placeholder="Last name">
+        <br>
+        <label for="status_id"><b>Client's Status</b></label>
+        <select formControlName="status_id">
+          <option>[Select one ...]</option>
+          <option [value]="c.id" *ngFor="let c of statusCodes">{{c.name}}</option>
+        </select>
+        <br>
+        <label for="phone_number"><b>Client's Phone Number</b></label>
+        <input type="text" formControlName="phone_number" placeholder="Phone number">
+        <br>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </section>
+</body>
+
+
+
+

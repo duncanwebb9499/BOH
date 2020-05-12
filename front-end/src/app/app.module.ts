@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'editclient/:id', component: EditClientInfoComponent, canActivate: [AuthGuard]},
   { path: 'editcompany/:id', component: EditCompanyInfoComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '**', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({
