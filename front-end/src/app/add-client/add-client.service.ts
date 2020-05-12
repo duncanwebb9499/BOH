@@ -16,6 +16,6 @@ export class AddClientService {
   constructor(private http: HttpClient) { }
 
   addClient(userId: number, client: ClientToAdd): Observable<any>{
-    return this.http.post<any>(server+'/caseWorker/clients/add'+userId, {ClientToAdd});
+    return this.http.post<any>(server+'/caseWorker/clients/add'+userId, {client});
   }
 }

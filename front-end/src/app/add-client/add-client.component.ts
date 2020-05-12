@@ -6,6 +6,7 @@ import { EditClientInfoService, StatusCode } from '../edit-client-info/edit-clie
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../main-screen/main-screen.service';
 import { AddClientService } from './add-client.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-client',
@@ -20,6 +21,7 @@ export class AddClientComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     readonly loginService: LoginService,
+    private readonly router: Router,
     private readonly editClientInfoService: EditClientInfoService,
     private readonly addClientService: AddClientService,
 
@@ -33,10 +35,10 @@ export class AddClientComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       sex: ['', Validators.required], 
-      lph_resident: [''], 
-      owns_car: [''], 
-      has_license: [''], 
-      ride_available: [''], 
+      lph_resident: [], 
+      owns_car: [], 
+      has_license: [], 
+      ride_available: [], 
       status_id: ['', Validators.required]
     });
     this.editClientInfoService.getStatusCodes().subscribe(
@@ -47,12 +49,26 @@ export class AddClientComponent implements OnInit {
 
   }
   onSubmit(){
+    this.updateValues();
     const formValues = this.addClientForm.value;
-    alert("Client Information Received");
+    //TODO: ADD CLIENT HTTP REQUEST
+    alert("Client Data Received");
+    this.router.navigate(['home']);
+
+    
+    
+
   }
-
-  
-
+  updateValues(){
+    (this.addClientForm.controls.lph_resident.value !== null)?
+      this.addClientForm.controls.lph_resident.setValue(true):this.addClientForm.controls.lph_resident.setValue(false);
+    (this.addClientForm.controls.owns_car.value !== null)?
+      this.addClientForm.controls.owns_car.setValue(true):this.addClientForm.controls.owns_car.setValue(false);
+    (this.addClientForm.controls.has_license.value !== null)?
+      this.addClientForm.controls.has_license.setValue(true):this.addClientForm.controls.has_license.setValue(false);
+    (this.addClientForm.controls.ride_available.value !== null)?
+      this.addClientForm.controls.ride_available.setValue(true):this.addClientForm.controls.ride_available.setValue(false);
+  }
 
 }
 export class ClientToAdd {
